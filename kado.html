@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Edition</title>
+    <style>
+       body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #FFDEE9;
+            background: linear-gradient(to right, #FFDEE9, #B5FFFC);
+            overflow: hidden;
+        }
+        
+        #background-video {
+            width: 330px; /* Lebar standar smartphone */
+            height: 568px; /* Tinggi standar smartphone */
+            position: relative;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        /* Mute Button Styles */
+        #mute-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 15;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+   
+        /* Balloon Styles */
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 80px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #FF6F61, #FF9A8B);
+            border-radius: 50% 50% 45% 45%; /* Membuat bentuk oval */
+            animation: rise 5s linear forwards;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            z-index: 0; /* Balon di belakang kupon */
+        }
+        .balloon:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 3px;
+            height: 30px;
+            background-color: #8B0000;
+            transform: translateX(-50%);
+        }
+        @keyframes rise {
+            0% { bottom: -150px; transform: translateX(0); }
+            100% { bottom: 100vh; transform: translateX(calc(-50vw + 50%)); }
+        }
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFC107;
+            opacity: 0.8;
+            animation: confetti-fall 3s infinite linear;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+   
+    </style>
+</head>
+<body>
+    <!-- Audio Background -->
+    <audio id="background-music" loop>
+        <source src="kado.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="pop-sound">
+        <source src="pop.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        // Background music and play button if autoplay is blocked
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('background-music');
+            var playPromise = audio.play();
+             // Set volume untuk background music (lebih pelan)
+        audio.volume = 0.1; // 30% volume
+        
+       
+
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    // Automatic playback started!
+                }).catch(function() {
+                    // Automatic playback failed. Create a button to allow user to play music
+                    var playButton = document.createElement("button");
+                    playButton.innerText = "Play Music";
+                    playButton.style.position = "absolute";
+                    playButton.style.top = "50px";
+                    playButton.style.left = "50%";
+                    playButton.style.transform = "translateX(-50%)";
+                    playButton.style.padding = "10px 20px";
+                    playButton.style.fontSize = "16px";
+                    playButton.style.cursor = "pointer";
+                    playButton.style.zIndex = "1000"; /* Menempatkan tombol di depan */
+                    document.body.appendChild(playButton);
+                    playButton.addEventListener('click', function() {
+                        audio.play();
+                        playButton.remove();
+                    });
+                });
+            }
+        });
+
+        // Create balloons
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = `${Math.random() * 100}vw`;
+            // Set warna acak untuk balon
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+            balloon.addEventListener('click', function() {
+                const popSound = document.getElementById('pop-sound');
+                popSound.currentTime = 0; // reset sound
+                popSound.play(); // play pop sound
+                balloon.remove(); // remove balloon after click
+            });
+
+            document.body.appendChild(balloon);
+        }
+
+        // Create multiple balloons at intervals
+        setInterval(createBalloon, 2000);
+
+        // Confetti Effect
+        function createConfetti(num) {
+            for (let i = 0; i < num; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(confetti);
+            }
+        }
+        createConfetti(50);
+    </script>
+ <body>
+    <div class="container">
+        <!-- Video Background -->
+        <video id="background-video" autoplay muted loop>
+            <source src="main1.mp4" type="video/mp4">
+            Browser Anda tidak mendukung elemen video.
+        </video>
+        
+        <!-- Mute Button -->
+        <button id="mute-button">🔇</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('background-video');
+        const muteButton = document.getElementById('mute-button');
+ // Set volume untuk video (lebih keras)
+ video.volume = 1.0; // 80% volume
+        // Fungsi untuk toggle mute/unmute video
+        muteButton.addEventListener('click', () => {
+            video.muted = !video.muted; // Toggle mute status
+            muteButton.textContent = video.muted ? '🔇' : '🔊'; // Update icon
+        });
+    </script>
+</body>
+</html>
+
