@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Ucapan Ulang Tahun</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, #faf6fa, #d05ad4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1600px;
+            height: 90%;
+            position: relative;
+        }
+
+        /* Video Styles */
+        #background-video {
+            position: fixed;
+            width: 100vw;
+            height: auto;
+            object-fit: cover;
+            border: 5px solid #ee78da;
+            z-index: 2;
+            transition: all 4s ease-in-out;
+            top: 0;
+        }
+
+      /* Video Styles */
+#background-video.shrink {
+    width: 320px; /* Lebar standar smartphone */
+    height: 568px; /* Tinggi standar smartphone */
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.card.expand {
+    width: 65%; /* Lebar setelah melebar */
+    height: 100%; /* Tinggi penuh */
+    background: rgba(255, 255, 255, 0); /* Transparansi penuh */
+    transition: all 2s ease-in-out;
+    box-shadow: none; /* Hilangkan bayangan saat transparan */
+    border: none; /* Hilangkan border */
+}
+        /* Card Styles */
+        .card {
+            width: 45%;
+            height: calc(100% - 10px);
+            overflow-y: auto;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            border: 5px solid #e724b7;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card-header, .card-footer {
+            background: rgba(255, 255, 255, 0.8);
+            color: #2c3e50;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .card p {
+            color: #34495e;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Mute Button Styles */
+        #mute-button {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 15;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+         /* Bintang animasi */
+         .star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.9;
+    z-index: 3; /* Pastikan lebih tinggi dari video */
+    animation: twinkling 2s infinite ease-in-out;
+}
+
+@keyframes twinkling {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.3; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Video Background -->
+        <video id="background-video" autoplay muted loop>
+            <source src="main.mp4" type="video/mp4">
+            Browser Anda tidak mendukung elemen video.
+        </video>
+
+        <audio id="background-music" loop autoplay>
+            <source src="main.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+
+        <div class="card">
+            <div class="card-header">Selamat Ulang Tahun, Dian 🎉</div>
+            <p style="--index: 1;">
+Dian! Belakangan aku sering loh ketawa sendiri kalau keingat hari pertama jualan kau nguap nunggu pembeli dan kau ga sadar aku litain. Atau pas kau kaget tiba-tiba denger suara pintu, ekspresimu tuh udah kayak ketangkap basah sama omah—padahal aku cuma buka pintu stan jualan-mu. Tapi di balik semua itu, ada satu hal yang gak bisa kau sembunyikan, wajahmu kalau lagi banyak pikiran. Aku tahu, kau punya caramu sendiri buat menghadapi semuanya tanpa cerita atau ngeluh. Aku harap hari ini bisa jadi pengingat kalau kau itu berharga. Andai keluargamu tahu isi hati dan fikiranmu yang gamau menyusahkan mereka dan punya cita-cita mulia, omah pasti bangga, adikmu kagum, dan orangtuamu bersyukur punya kau. Dan bukan cuma mereka. Orang yang diam-diam memperhatikanmu juga kagum sama prinsip-prinsip mu dan caramu bertahan dari semua badai masalah yang kau hadapi sendiri.
+            </p>
+                        <p style="--index: 2;">Di perjalananmu, pasti ada saat di mana capeknya bikin pengen nyerah. Tapi aku yakin, setiap langkah kecil yang kau ambil, walaupun kadang kayak sia-sia, itu sebenarnya lagi ngarahin kau ke sesuatu yang lebih besar. Kalau suatu waktu kau merasa ragu, ingat yaa ada orang-orang yang menunggu kesuksesanmu, ada banyak yang percaya sama potensi hebat di dirimu, termasuk aku. Aku yakin kau bakal terus jalan buat sampai ke masa depan yang kau impikan entah itu dari usaha kecilmu sekarang atau rencana hebat yang diam-diam kau rancang.</p>
+            <!-- <p style="--index: 4;">Dian, Sekarang sedikit banyaknya kau udah tau gimana cara aku mandang kau, mungkin dari teks panjang ini ataupun dari sikapku selama ini, aku juga mau minta maaf andai selama ini bikin kau risih dan ga nyaman dengan sikapku ke kau ataupun dari candaan temen" tentang kita. Walaupun aku gatau gimana cara kau mandang aku dan mungkin kau dengar tentang aku yang dianggap buruk. Tapi, aku harap kau ga berusaha menjauh😊</p> -->
+            <p style="--index: 3;"> Di Hari yang spesial ini, aku doakan setelah hari ini semoga lebih banyak kebahagiaan, keberanian, kesempatan dan fisikmu disehatkan, di kuatkan selalu. Ingat ya Dian, kau ga sendiri, dan ada banyak orang yang peduli denganmu. Semoga setiap langkah kecilmu membawa kau lebih dekat ke mimpi-mimpimu. Jangan nyerah yaa gada yang mustahil kok "مَنْ جَدَّ وَجَدَ وَ كُنْ فَيَكُون". Selamat ulang tahun, Dian.🥳</p>
+            <a class="card-footer" href="kado.html" style="text-decoration: none; color: inherit;">
+                🌺 Klik yaa😊 🌺
+            </a>
+            
+        </div>
+    </div>
+
+        <!-- Mute Button -->
+        <button id="mute-button">
+            🔇
+        </button>
+    </div>
+
+    <script>
+        const video = document.getElementById('background-video');
+        const muteButton = document.getElementById('mute-button');
+        let videoMuted = true;
+
+        // Menjalankan musik
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('background-music');
+            audio.play().catch(() => {
+                const playButton = document.createElement("button");
+                playButton.innerText = "Play Music";
+                playButton.style.position = "absolute";
+                playButton.style.zIndex="10"
+                playButton.style.top = "50px";
+                playButton.style.left = "50%";
+                playButton.style.transform = "translateX(-50%)";
+                playButton.style.padding = "10px 20px";
+                playButton.style.fontSize = "16px";
+                playButton.style.cursor = "pointer";
+                document.body.appendChild(playButton);
+                playButton.addEventListener('click', function() {
+                    audio.play();
+                    playButton.remove();
+                });
+            });
+        });
+
+        // Shrink video and display mute button
+    // Fungsi untuk menambahkan animasi pada card setelah video mengecil
+setTimeout(() => {
+    video.classList.add('shrink'); // Video mengecil
+    setTimeout(() => {
+        const card = document.querySelector('.card');
+        card.classList.add('expand'); // Card melebar dan menjadi transparan
+    }, 3000); // Waktu delay setelah video mengecil
+}, 2000);
+
+        // Toggle mute/unmute on button click
+        muteButton.addEventListener('click', () => {
+            videoMuted = !videoMuted;
+            video.muted = videoMuted;
+            muteButton.innerHTML = videoMuted ? '🔇' : '🔊';
+        });
+
+        // Handle fullscreen changes
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement === video) {
+                video.muted = false; // Unmute when fullscreen
+                video.play();
+            } else if (video.classList.contains('shrink')) {
+                video.muted = true; // Mute when exited fullscreen if in shrink mode
+                video.play();
+            }
+        });
+
+        // Make video fullscreen on double-click
+        video.addEventListener('dblclick', () => {
+            if (!document.fullscreenElement) {
+                video.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // Ensure video stays muted in shrink mode
+        video.addEventListener('transitionend', () => {
+            if (video.classList.contains('shrink')) {
+                video.muted = true;
+                muteButton.innerHTML = '🔇';
+            }
+        });
+         // Bintang-bintang di background
+         function createStars(numStars) {
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                document.body.appendChild(star);
+            }
+        }
+        createStars(100);
+    </script>
+    </script>
+</body>
+</html>
